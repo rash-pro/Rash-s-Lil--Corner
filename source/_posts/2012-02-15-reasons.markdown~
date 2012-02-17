@@ -1,0 +1,57 @@
+---
+layout: post
+title: "Reasons"
+date: 2012-02-15 17:24
+comments: true
+categories: General
+---
+
+So I'm explaining all of the reasons for what I've decided over
+[Octopress](http://octopress.org "Awesome Blogging Framework for Hackers")
+insted of my almost desert [Posterous](http://rashpro.posterous.com).
+
+One of the main things I want to maintain a blog is to share Code, 
+either be Java, Ruby, Racket, C++, etc..., I have to be able to share
+code almost seamlessly, in this [Octopress](http://octopress.org "Awesome")
+excels all in all 
+
+
+Let's say I have the following code:
+
+	(define ackermann
+		(lambda(m n)
+			(cond
+				[(zero? m) (add1 m)]
+				[(and (> m 0) (zero? n)) (ackermann (sub1 m) 1)]
+				[(and (> m 0) (> n 0)) (ackermman (sub1 m) (ackermann m (sub1 n)))])))
+<!-- more -->
+
+Even if it is enclosed on a box, it really looks awful but doing some magic here we get:
+
+``` scheme Ackermann - ackerman.rkt
+	(define ackermann
+		(lambda(m n)
+			(cond
+				[(zero? m) (add1 m)]
+				[(and (> m 0) (zero? n)) (ackermann (sub1 m) 1)]
+				[(and (> m 0) (> n 0)) (ackermman (sub1 m) (ackermann m (sub1 n)))])))
+```
+
+looks totally diffrent doesn't it?, you can even embed sourcefiles, and it makes the code look superb
+
+{% gist 996818 %}
+
+See, it took a gist over from [Github](https://github.com), and put it right here.
+
+Now for the *Editing Part*, I've always liked [Emacs](http://www.gnu.org/s/emacs "The best text editor!")
+and with some minor adjustments blogging from within *Emacs*, is as easy as pie
+just with two major modes [Markdown Emacs Mode](http://jblevins.org/projects/markdown-mode/) and this [Emacs-Octopress](https://gist.github.com/1760275), just changed
+
+```
+ -- (let ((command-str (format "zsh -i -c 'cd %s && rake %s'" octopress-workdir command)))
+ ++   (let ((command-str (format "bash -i -c 'cd %s && rake %s'" octopress-workdir command)))
+ ```
+ 
+ to match my bash shell.
+ 
+ Well that should be just everything about now, stay tuned for more *awesomeness*, and more Random Ramblings.
